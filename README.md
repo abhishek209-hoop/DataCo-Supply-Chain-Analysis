@@ -86,5 +86,4 @@ DataCo supply chain dataset. Add the source link here, e.g. `[Dataset name](http
 
 ## Author
 
-**Your Name**
-[LinkedIn](https://www.linkedin.com/) · [GitHub](https://github.com/)
+**Saranga Abhishek**
