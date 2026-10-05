@@ -1,90 +1,330 @@
-**DataCo Supply Chain Analytics**
+# 📊 DataCo Supply Chain Analysis
 
-End-to-end analysis of an e-commerce supply chain: SQL and Python for the analysis, Power BI for interactive KPI dashboards, and a set of recommendations for reducing late deliveries.
+An end-to-end **Supply Chain & Business Analytics project** using the DataCo Smart Supply Chain dataset to analyze sales performance, delivery efficiency, profitability, customer behavior, and operational bottlenecks.
 
-**Overview**
+The project transforms raw supply-chain data into actionable business insights through **data cleaning, exploratory analysis, KPI analysis, visualization, and dashboarding**.
 
-DataCo is a global company selling clothing, sports and electronics products through multiple markets. Late deliveries hurt customer experience and profit, but the causes are spread across regions, shipping modes and product categories.
+---
 
-This project cleans the order data, analyzes what drives delivery delays, and presents the results as a Power BI dashboard that operations and sales teams can use to monitor supply chain performance.
+## 🎯 Project Objective
 
-**Key numbers**
+The objective of this project is to understand the key drivers of **sales, profitability, and supply-chain performance** and identify areas where operational improvements can enhance customer experience and business performance.
 
-Metric	Value
-Orders analyzed	65K+
-Customers	20K+
-Attributes analyzed	53
-Product categories	50
-Regions	23
-Markets	5
-Orders flagged with late-delivery risk	54.8%
-Business questions
-How are revenue, profit and order volume performing overall?
-How often are deliveries late, and where is the problem concentrated?
-Which shipping modes, regions and product categories drive delivery delays?
-How do customer segments differ in revenue and profitability?
-What should the business change to improve delivery performance?
-Dataset
-Source: DataCo Smart Supply Chain for Big Data Analysis, published on Mendeley Data and mirrored on Kaggle.
-Content: order, customer, product, shipping and financial fields covering provisioning, production, sales and distribution.
-Note: the Late_delivery_risk field in the dataset is a flag on each order. The 54.8% figure is the share of orders carrying that flag.
-Tools
-Area	Tools
-Analysis	Python (Pandas, NumPy), SQL
-Visualization	Power BI (DAX, Power Query)
-Supporting	Excel
-<!-- Keep only the tools you actually used. Remove DAX / Power Query if they don't apply. -->
-Approach
-Data cleaning (Python, Pandas): checked missing values and duplicates, fixed data types and dates, and removed columns not useful for analysis.
-Exploratory analysis (Python, SQL): summarized sales, profit and delivery performance by region, market, shipping mode, category and customer segment.
-Delivery-delay analysis: compared scheduled and actual shipping days and measured late-delivery risk across all 53 attributes to find where delays concentrate.
-Dashboard (Power BI): built KPI pages for revenue, profitability, shipping lead time and delivery performance, with filters for market, region, shipping mode and category.
-Recommendations: turned the findings into actions for operations and sales.
-Example query
-sql
--- Late-delivery risk by shipping mode (adjust names to match your table)
-SELECT
-    shipping_mode,
-    COUNT(*)                                   AS orders,
-    ROUND(100.0 * AVG(late_delivery_risk), 1)  AS late_risk_pct,
-    ROUND(AVG(days_for_shipping_real), 2)      AS avg_actual_days,
-    ROUND(AVG(days_for_shipment_scheduled), 2) AS avg_scheduled_days
-FROM orders
-GROUP BY shipping_mode
-ORDER BY late_risk_pct DESC;
-Dashboard
-Page	What it shows
-Executive summary	Total sales, profit, orders, customers, overall late-delivery rate
-Delivery performance	Scheduled vs actual shipping days, late-delivery risk by shipping mode and region
-Product and category	Sales and profit across 50 categories
-Market and region	Performance across 5 markets and 23 regions
-Customer segments	Revenue and profitability by segment
-<!-- Rename the pages to match your .pbix file and add a screenshot of each. -->
-Key findings
-54.8% of orders carry a late-delivery risk flag across the 65K+ orders analyzed.
-Recommendations
-[Review the shipping mode with the highest late-delivery risk: change scheduled lead times or switch carriers.]
-[Prioritize the regions with the worst delivery performance for logistics improvements.]
-[Set up regular KPI tracking in the dashboard, with alerts when the late-delivery rate goes above a set limit.]
-Repository structure
+The analysis focuses on questions such as:
+
+- Which markets and product categories generate the highest revenue?
+- Which products and categories contribute the most profit?
+- Where are delivery delays concentrated?
+- How does shipping mode affect delivery performance?
+- Which customer segments and regions drive business value?
+- What operational patterns indicate potential supply-chain inefficiencies?
+- Which KPIs should management monitor to improve supply-chain performance?
+
+---
+
+## 🏢 Business Context
+
+DataCo Global is an e-commerce business operating across multiple markets with a large portfolio of products and customers.
+
+A supply-chain organization needs visibility across multiple dimensions:
+
+**Demand → Sales → Fulfillment → Delivery → Customer Experience → Profitability**
+
+This project analyzes these dimensions together to identify performance gaps and generate data-driven recommendations.
+
+---
+
+## 📂 Dataset
+
+The project uses the **DataCo Smart Supply Chain Dataset**, a widely used supply-chain analytics dataset containing order, customer, product, sales, shipping, and delivery information.
+
+Key attributes include:
+
+- Order and order-item information
+- Product and category details
+- Customer segments
+- Geographic information
+- Sales and profit metrics
+- Shipping modes
+- Scheduled vs. actual shipping time
+- Delivery status
+- Late-delivery indicators
+- Order dates and shipping dates
+
+The dataset enables analysis across **sales, operations, logistics, customers, products, and profitability**.
+
+---
+
+## 🛠️ Tools & Technologies
+
+| Area | Tools |
+|---|---|
+| Programming | Python |
+| Data Manipulation | Pandas, NumPy |
+| Data Visualization | Matplotlib |
+| Business Intelligence | Power BI |
+| Spreadsheet Analysis | Microsoft Excel |
+| Version Control | Git, GitHub |
+| Analysis | Exploratory Data Analysis, KPI Analysis, Root-Cause Analysis |
+
+---
+
+## 🔄 Project Workflow
+
+```text
+Raw Data
+   ↓
+Data Understanding
+   ↓
+Data Cleaning & Preprocessing
+   ↓
+Exploratory Data Analysis
+   ↓
+KPI Development
+   ↓
+Sales & Profitability Analysis
+   ↓
+Supply Chain & Delivery Analysis
+   ↓
+Customer & Product Analysis
+   ↓
+Dashboard Development
+   ↓
+Business Insights & Recommendations
+```
+
+---
+
+## 📈 Key Analytical Areas
+
+### 1. Sales Performance
+
+Analyzed sales across:
+
+- Markets
+- Regions
+- Customer segments
+- Product categories
+- Time periods
+
+This helps identify the major revenue contributors and understand business growth patterns.
+
+### 2. Profitability Analysis
+
+Evaluated:
+
+- Total sales
+- Total profit
+- Profit by category
+- Profit by market
+- Profit by customer segment
+- Product-level profitability
+
+The objective is to distinguish **high-sales products from genuinely high-value products**.
+
+### 3. Delivery & Logistics Performance
+
+Analyzed supply-chain efficiency using:
+
+- Shipping mode
+- Scheduled shipping days
+- Actual shipping days
+- Delivery status
+- Late-delivery risk
+- Geographic distribution
+
+The analysis helps identify where delivery performance deviates from expected service levels.
+
+### 4. Customer Analysis
+
+Examined customer behavior across:
+
+- Customer segments
+- Markets
+- Regions
+- Order volume
+- Sales contribution
+
+This provides visibility into the customer groups driving business performance.
+
+### 5. Product & Category Analysis
+
+Compared products and categories based on:
+
+- Sales
+- Profit
+- Order volume
+- Demand contribution
+- Delivery performance
+
+This helps identify high-performing and underperforming product groups.
+
+---
+
+## 📊 Dashboard
+
+The project includes an interactive dashboard designed to provide management-level visibility into supply-chain and business performance.
+
+### Dashboard KPIs
+
+Key metrics include:
+
+- Revenue / Sales
+- Profit
+- Orders
+- Delivery Performance
+- Late Delivery Rate
+- Product Performance
+- Market Performance
+- Customer Segment Performance
+
+The dashboard enables users to drill down from overall business performance into specific markets, categories, products, and operational dimensions.
+
+---
+
+## 💡 Business Insights
+
+The analysis is designed to identify actionable insights rather than simply present descriptive statistics.
+
+Examples of decision areas include:
+
+### 🚚 Logistics Optimization
+Identify shipping modes, markets, and regions associated with higher delivery delays.
+
+### 💰 Profitability Improvement
+Identify products and categories generating strong sales but comparatively weak profitability.
+
+### 🌎 Market Prioritization
+Compare geographic markets based on sales, profit, customer contribution, and operational performance.
+
+### 📦 Product Portfolio Optimization
+Identify high-performing categories and products that contribute disproportionately to revenue or profit.
+
+### 👥 Customer Strategy
+Understand which customer segments generate the greatest commercial value and where additional engagement opportunities exist.
+
+---
+
+## 📁 Repository Structure
+
+```text
 DataCo-Supply-Chain-Analysis/
-├── data/                  # raw and cleaned data (or a link, if the file is large)
-├── notebooks/             # Python analysis (cleaning, EDA)
-├── sql/                   # SQL queries
-├── dashboard/             # Power BI file (.pbix) and PDF export
-├── images/                # dashboard screenshots
-└── README.md
-<!-- Edit this tree to match your actual folders and file names. -->
-How to reproduce
-Download the dataset from the link above and place it in data/.
-Install the Python packages: pip install pandas numpy jupyter.
-Run the notebooks in notebooks/ in order to clean the data and reproduce the analysis.
-Run the queries in sql/ against the cleaned data.
-Open the .pbix file in dashboard/ with Power BI Desktop and refresh the data source path.
-What I learned
-Turning a wide dataset (53 attributes) into a focused set of KPIs.
-Combining SQL, Python and Power BI in one workflow.
-Linking operational findings to practical recommendations.
-Author
+│
+├── README.md
+│
+├── Data/
+│   └── Dataset / processed data
+│
+├── Python/
+│   └── Data cleaning & analysis notebooks/scripts
+│
+├── Excel/
+│   └── Excel analysis files
+│
+├── PowerBI/
+│   └── Power BI dashboard
+│
+├── Images/
+│   └── Dashboard screenshots / visualizations
+│
+└── Reports/
+    └── Analysis findings and documentation
+```
 
-Saranga Abhishek B.Tech, Mineral and Metallurgical Engineering, IIT (ISM) Dhanbad
+> **Note:** Update the folder names above to match the exact folders currently present in the repository.
+
+---
+
+## 🔍 Analytical Approach
+
+The project follows a structured analytics methodology:
+
+### Data Cleaning
+- Checked missing values
+- Identified duplicate records
+- Standardized data types
+- Converted date fields
+- Validated numerical fields
+- Prepared analytical variables
+
+### Exploratory Data Analysis
+Used descriptive statistics and visual analysis to identify:
+
+- Distribution patterns
+- Trends
+- Outliers
+- Category-level differences
+- Geographic variations
+- Delivery-performance patterns
+
+### KPI Analysis
+
+Developed business KPIs to measure:
+
+```text
+Sales Performance
+        ↓
+Profitability
+        ↓
+Order Performance
+        ↓
+Delivery Performance
+        ↓
+Customer Performance
+```
+
+### Root-Cause Analysis
+
+Rather than only reporting that a KPI is underperforming, the analysis breaks performance down by relevant dimensions such as:
+
+**Market → Region → Shipping Mode → Product Category → Customer Segment**
+
+This allows operational problems to be investigated at a more actionable level.
+
+---
+
+## 🚀 Key Takeaways
+
+This project demonstrates the ability to:
+
+- Work with large, multi-dimensional business datasets
+- Perform end-to-end data cleaning and exploratory analysis
+- Translate business questions into analytical problems
+- Develop meaningful supply-chain KPIs
+- Analyze operational and financial performance together
+- Build interactive business dashboards
+- Identify patterns and potential root causes
+- Convert analytical findings into business recommendations
+
+---
+
+## 📌 Future Enhancements
+
+Potential extensions include:
+
+- SQL-based analytical layer
+- Automated ETL pipeline
+- Demand forecasting
+- Customer segmentation
+- Delivery-delay prediction
+- Product-level profitability modeling
+- Advanced statistical analysis
+- Automated dashboard refresh
+- Executive-level supply-chain alerting
+
+---
+
+## 👤 Author
+
+**Saranga Abhishek**
+
+B.Tech — Mineral & Metallurgical Engineering  
+IIT (ISM) Dhanbad
+
+Interested in **Data Analytics, Business Analytics, Product Analytics, and Consulting**.
+
+---
+
+## ⭐ Project
+
+If you find this project useful, feel free to ⭐ the repository.
