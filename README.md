@@ -1,14 +1,14 @@
-DataCo Supply Chain Analytics
-
+**DataCo Supply Chain Analytics
+**
 End-to-end analysis of an e-commerce supply chain: SQL and Python for the analysis, Power BI for interactive KPI dashboards, and a set of recommendations for reducing late deliveries.
-
-Overview
+**
+Overview**
 
 DataCo is a global company selling clothing, sports and electronics products through multiple markets. Late deliveries hurt customer experience and profit, but the causes are spread across regions, shipping modes and product categories.
 
 This project cleans the order data, analyzes what drives delivery delays, and presents the results as a Power BI dashboard that operations and sales teams can use to monitor supply chain performance.
 
-Key numbers
+**Key numbers**
 
 Metric	Value
 Orders analyzed	65K+
