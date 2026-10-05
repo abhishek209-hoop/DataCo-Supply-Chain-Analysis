@@ -1,4 +1,5 @@
 **DataCo Supply Chain Analytics**
+
 End-to-end analysis of an e-commerce supply chain: SQL and Python for the analysis, Power BI for interactive KPI dashboards, and a set of recommendations for reducing late deliveries.
 
 **Overview**
