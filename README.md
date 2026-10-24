@@ -1,90 +1,79 @@
-# DataCo Supply Chain Dashboard (Power BI)
+# DataCo Supply Chain Analysis — Power BI
 
-A three-page Power BI report for monitoring global supply chain activity and delivery performance at DataCo. It tracks orders, sales, profit, shipping lead time and on-time delivery so that logistics teams can spot trends and bottlenecks.
+An interactive Power BI report for exploring sales performance, profitability, delivery operations, and customer segments using the cleaned DataCo Smart Supply Chain dataset.
 
-## Business problem
+## Report file
 
-DataCo needs one place to monitor and assess its global supply chain operations. The report should:
+Open [`Report.pbix`](./Report.pbix) with **Microsoft Power BI Desktop** to interact with the report pages, slicers, and visuals.
 
-- Track key logistics and sales KPIs and how they change over time (MTD and MoM)
-- Separate on-time deliveries from late deliveries and show the financial impact of each
-- Show where demand, delays and profit sit across regions, shipping modes, customer segments, product categories and departments
+## Report pages
 
-The full brief is in [`docs/DATACO_SUPPLY_CHAIN_REPORT_PROBLEM_STATEMENT.docx`](docs/DATACO_SUPPLY_CHAIN_REPORT_PROBLEM_STATEMENT.docx).
+### 1. Sales Report
 
-## Dashboard overview
+Explore commercial performance across markets, countries, regions, product categories, and individual products.
 
-### Dashboard 1: Summary
+- KPI cards for total sales, order-ID count, and order profit
+- Sales by market and order country
+- Geographic distribution of sales by order region
+- Profit per order by product category
+- Top and bottom five products by sales
+- Slicers for order year and order country
 
-**Headline KPIs** (each with MTD value and MoM change)
+### 2. Delivery Report
 
-| KPI | Definition |
-| --- | --- |
-| Total Orders | Number of orders in the selected period |
-| Total Sales Revenue | Revenue from product sales |
-| Total Profit | Net profit (benefit per order) on fulfilled orders |
-| Average Shipping Lead Time | Average real shipping days |
-| On-Time Delivery Rate | % of orders delivered within the scheduled time |
+Compare delivery outcomes, shipping duration, order status, shipping mode, and payment type.
 
-**On-time vs late delivery KPIs**
+- Average delay KPI
+- Sales by order status
+- Delivery-status distribution using order-item records
+- Actual versus scheduled shipping duration by delivery status
+- Shipping duration by shipping mode
+- Quantity mix by delivery status and shipping mode
+- Payment-type distribution
+- Slicers for order year and order country
 
-- **On-time** = delivery status *Shipping on time* or *Advance shipping*. Tracked as on-time %, orders, sales revenue and total profit.
-- **Late** = delivery status *Late delivery*. Tracked as late delivery % (late delivery risk), orders, sales revenue and total profit impact.
+### 3. Customer Segment Report
 
-**Delivery status grid view**: a table by delivery status (Late delivery, Advance shipping, Shipping on time, Shipping canceled) showing total orders, sales revenue, profit, average shipping lead time and on-time delivery rate.
+Compare customer segments and geographic markets, and identify products associated with sales and customer value.
 
-### Dashboard 2: Overview
+- Sales by customer segment
+- Sales by product
+- Benefit per order by customer segment
+- Customer distribution by country and order region
+- KPI cards for customer count, category count, and order profit
+- Slicers for order year and order country
 
-| # | Visual | Metrics | Breakdown |
-| --- | --- | --- | --- |
-| 1 | Line chart | Total orders, sales revenue, profit | Month of order date |
-| 2 | Filled map | Total orders, sales revenue, avg. shipping lead time | Market / order region |
-| 3 | Donut chart | Total orders, late delivery % | Shipping mode |
-| 4 | Bar chart | Total orders, sales revenue, profit | Customer segment |
-| 5 | Bar chart | Total orders, sales revenue, late delivery % | Product category |
-| 6 | Tree map | Total orders, sales revenue | Department |
+## Questions this report helps answer
 
-### Dashboard 3: Details
+- Which markets, countries, regions, categories, and products contribute the most sales?
+- How does profit per order vary across product categories?
+- How do delivery outcomes differ by shipping mode and order status?
+- How do actual and scheduled shipping durations compare across delivery statuses?
+- How are sales and benefit per order distributed across Consumer, Corporate, and Home Office segments?
+- Where are customers located across countries and order regions?
 
-A consolidated detail view of order fulfilment, shipping routes, customer profiles and overall logistics performance, for drilling into the data behind the summary and overview pages.
+## Dataset and metric notes
 
-## Screenshots
+The report uses the cleaned `DataCoSupplyChainDataset_cleaned` model. Key fields include `Order Item Total`, `Order Profit Per Order`, `Order Status`, `Delivery Status`, `Shipping Mode`, `Days for shipping (real)`, `Days for shipment (scheduled)`, `Customer Segment`, `Customer Country`, `Order Region`, and `Type`.
 
-<!-- Add your exported dashboard images to the images/ folder and update the file names below. -->
+**Interpret row-level metrics carefully:** the dataset contains order-item records. Some visuals count non-null `Order Id` or `Order Item Id` values rather than distinct orders. Those counts therefore should not automatically be interpreted as unique-order counts. Similarly, totals and averages should be interpreted using the aggregation shown in the relevant visual.
 
-| Summary | Overview | Details |
-| --- | --- | --- |
-| ![Summary](images/dashboard-1-summary.png) | ![Overview](images/dashboard-2-overview.png) | ![Details](images/dashboard-3-details.png) |
+## Tools
 
-## Repository structure
+- Microsoft Power BI Desktop
+- Power BI visualizations, report measures, and interactive slicers
 
-```
-.
-├── README.md
-├── Dashboard_1.pbix          # Power BI report file
-├── docs/
-│   └── DATACO_SUPPLY_CHAIN_REPORT_PROBLEM_STATEMENT.docx
-└── images/                   # Dashboard screenshots
-```
+## How to use
 
-## How to open the report
+1. Download or clone this repository.
+2. Open `Report.pbix` in Microsoft Power BI Desktop.
+3. Use the order-year and order-country slicers where available to filter the visuals.
+4. Select chart elements to cross-filter other visuals on the same report page.
 
-1. Install [Power BI Desktop](https://powerbi.microsoft.com/desktop/) (Windows).
-2. Download or clone this repository.
-3. Open `Dashboard_1.pbix` in Power BI Desktop.
-4. If prompted, refresh the data or point the data source to your local copy of the dataset.
+## Source
 
-## Tools used
-
-- Power BI Desktop
-- DAX (measures for MTD, MoM, on-time and late delivery metrics)
-- Power Query (data preparation)
-
-## Dataset
-
-DataCo supply chain dataset. Add the source link here, e.g. `[Dataset name](https://...)`.
+The analysis is based on the DataCo Smart Supply Chain dataset. This repository contains the Power BI report file; any separate source-data distribution remains subject to the dataset provider's terms.
 
 ## Author
-
-**Your Name**
-[LinkedIn](https://www.linkedin.com/) · [GitHub](https://github.com/)
+**Saranga Abhishek**
+ 
