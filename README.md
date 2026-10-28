@@ -1,6 +1,6 @@
 # DataCo Supply Chain Analysis — Power BI
 
-An interactive Power BI report for exploring sales performance, profitability, delivery operations, and customer segments using the cleaned DataCo Smart Supply Chain dataset.
+An interactive Power BI report for exploring sales performance, profitability, delivery operations, OTIF, and customer segments using the cleaned DataCo Smart Supply Chain dataset.
 
 ## Report file
 
@@ -19,6 +19,8 @@ Explore commercial performance across markets, countries, regions, product categ
 - Top and bottom five products by sales
 - Slicers for order year and order country
 
+![Sales Report](Docs/Sales_Report.png)
+
 ### 2. Delivery Report
 
 Compare delivery outcomes, shipping duration, order status, shipping mode, and payment type.
@@ -32,16 +34,33 @@ Compare delivery outcomes, shipping duration, order status, shipping mode, and p
 - Payment-type distribution
 - Slicers for order year and order country
 
+![Delivery Report](Docs/Delivery_Report.png)
+
 ### 3. Customer Segment Report
 
 Compare customer segments and geographic markets, and identify products associated with sales and customer value.
 
-- Sales by customer segment
-- Sales by product
+- Sales by customer segment and product
 - Benefit per order by customer segment
 - Customer distribution by country and order region
 - KPI cards for customer count, category count, and order profit
 - Slicers for order year and order country
+
+![Customer Segment Report](Docs/Customer_Segment_Report.png)
+
+### 4. OTIF Report
+
+Explore on-time delivery performance across markets, shipping modes, and months.
+
+- OTIF percentage proxy KPI
+- Orders not delivered on time by market
+- On-time versus not-on-time order percentages by shipping mode
+- Monthly OTIF proxy trend
+- Slicers for order year and order country
+
+The OTIF page labels its KPI as a **proxy**; interpret it as the report's calculated indicator, not as an independently validated service-level measure.
+
+![OTIF Report](Docs/OTIF_Report.png)
 
 ## Questions this report helps answer
 
@@ -51,6 +70,7 @@ Compare customer segments and geographic markets, and identify products associat
 - How do actual and scheduled shipping durations compare across delivery statuses?
 - How are sales and benefit per order distributed across Consumer, Corporate, and Home Office segments?
 - Where are customers located across countries and order regions?
+- How does the OTIF proxy vary by market, shipping mode, and month?
 
 ## Dataset and metric notes
 
